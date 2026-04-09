@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Chat - Glassmorphism</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- PANTALLA DE INGRESO -->
+    <div id="login-screen" class="glass-panel active">
+      <h1>Bienvenido</h1>
+      <p>Ingresa para chatear</p>
+      
+      <div class="input-group">
+        <label for="username">Nombre:</label>
+        <input type="text" id="username" placeholder="Tu nombre..." autocomplete="off">
+      </div>
+
+      <div class="input-group">
+        <label for="server-url">URL del Servidor WebSocket:</label>
+        <input type="text" id="server-url" value="http://localhost:3000" placeholder="Ej. wss://tu-servidor.com" autocomplete="off">
+      </div>
+
+      <div class="input-group">
+        <label for="role">Selecciona tu rol:</label>
+        <select id="role">
+          <option value="user">Usuario</option>
+          <option value="admin">Administrador</option>
+        </select>
+      </div>
+
+      <button id="join-btn" class="btn primary-btn">Ingresar al Chat</button>
+    </div>
+
+    <!-- PANTALLA PRINCIPAL DE CHAT -->
+    <div id="chat-screen" class="glass-panel" style="display: none;">
+      <header class="chat-header">
+        <div class="header-info">
+          <h2 id="chat-title">Chat Realtime</h2>
+          <span id="my-role-badge" class="badge">Usuario</span>
+        </div>
+        <button id="leave-btn" class="btn danger-btn">Salir</button>
+      </header>
+      
+      <div class="chat-container">
+        <!-- Panel Lateral para el Administrador -->
+        <aside id="sidebar" class="sidebar hidden">
+          <h3>Usuarios Activos</h3>
+          <ul id="users-list">
+            <!-- Los usuarios activos aparecerán aquí -->
+          </ul>
+        </aside>
+
+        <!-- Área de mensajes -->
+        <main class="chat-main">
+          <div id="messages-container" class="messages-area">
+            <!-- Burbujas de mensajes -->
+          </div>
+          
+          <div class="chat-input-area">
+            <span id="replying-to" class="hidden">Respondiendo a: <b>Usuario</b> <button id="cancel-reply">X</button></span>
+            <div class="input-wrapper">
+              <input type="text" id="message-input" placeholder="Escribe un mensaje..." autocomplete="off">
+              <button id="send-btn" class="btn action-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
